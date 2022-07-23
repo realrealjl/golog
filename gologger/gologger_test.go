@@ -1,4 +1,4 @@
-package logger
+package gologger
 
 import (
 	"github.com/gin-gonic/gin"
@@ -10,7 +10,7 @@ func TestLoggerToFile(t *testing.T) {
 	router := gin.Default()
 	router.Use(LoggerToFile())
 	router.GET("/", func(context *gin.Context) {
-		logger := getLogger()
+		logger := GetLogger()
 		context.JSON(http.StatusOK, gin.H{
 			"msg": "您好",
 		})

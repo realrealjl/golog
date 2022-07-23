@@ -1,4 +1,4 @@
-package logger
+package gologger
 
 import (
 	"fmt"
@@ -41,8 +41,8 @@ func createLogFile(logFilePath, filenameFormat string) *os.File {
 	return src
 }
 
-// 获取日志写入的logger
-func getLogger() *logrus.Logger {
+// GetLogger 获取日志写入的logger
+func GetLogger() *logrus.Logger {
 	logFilePath := ""
 	if dir, err := os.Getwd(); err == nil {
 		logFilePath = dir + "/logs/"
@@ -72,7 +72,7 @@ func getLogger() *logrus.Logger {
 }
 
 func LoggerToFile() gin.HandlerFunc {
-	logger := getLogger()
+	logger := GetLogger()
 	fmt.Println("使用middle ware")
 	return func(context *gin.Context) {
 		fmt.Println("收到请求")
